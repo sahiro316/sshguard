@@ -23,7 +23,8 @@ sshg-fw-pf:        sshg-fw.in sshg-fw-pf.sh
 
 CLEANFILES=$(libexec_SCRIPTS)
 
-sshg_fw_hosts_SOURCES = fw.h hosts.c ../common/simclist.c
+sshg_fw_hosts_SOURCES = fw.h hosts.c
+sshg_fw_hosts_LDADD = $(top_srcdir)/src/common/libsimclist.a
 
 SUFFIXES=.sh
 .sh:

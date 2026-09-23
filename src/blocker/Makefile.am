@@ -3,9 +3,6 @@ AM_CFLAGS=-I$(top_srcdir)/src/common -DSIMCLIST_NO_DUMPRESTORE
 libexec_PROGRAMS = sshg-blocker
 
 sshg_blocker_SOURCES = \
-	../common/sandbox.c \
-	../common/service_names.c \
-	../common/simclist.c \
 	attack.c \
 	blocker.c \
 	blocklist.c \
@@ -19,6 +16,10 @@ sshg_blocker_SOURCES = \
 	sshguard_options.h \
 	sshguard_whitelist.c \
 	sshguard_whitelist.h
+sshg_blocker_LDADD = \
+	$(top_srcdir)/src/common/libsandbox.a \
+	$(top_srcdir)/src/common/libservice_names.a \
+	$(top_srcdir)/src/common/libsimclist.a
 
 LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
 			 $(top_srcdir)/tap-driver.sh
