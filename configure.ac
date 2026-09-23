@@ -3,7 +3,7 @@ AC_PREREQ([2.60])
 AC_INIT([sshguard], [2.5.1], [sshguard-users@lists.sourceforge.net])
 AM_MAINTAINER_MODE([enable])
 AC_CONFIG_SRCDIR([src/sshguard.in])
-AM_CONFIG_HEADER([src/common/config.h])
+AC_CONFIG_HEADERS([src/common/config.h])
 AM_INIT_AUTOMAKE([foreign])
 AM_SILENT_RULES([yes])
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
@@ -16,7 +16,7 @@ AC_PROG_CC_C99
 AC_PROG_RANLIB
 AC_PROG_YACC
 AM_PROG_AR
-AM_PROG_LEX
+AM_PROG_LEX([noyywrap])
 
 AS_BOX([Headers, Types, and Compiler Checks])
 AC_CHECK_HEADERS([getopt.h])
@@ -41,4 +41,5 @@ AC_SEARCH_LIBS([socket], [socket])
 AC_CHECK_FUNC([setresgid], [AC_DEFINE([HAVE_SETRESGID], [1], [Have setresgid])])
 AC_CHECK_FUNC([setresuid], [AC_DEFINE([HAVE_SETRESUID], [1], [Have setresuid])])
 
-AC_OUTPUT([Makefile src/Makefile src/blocker/Makefile src/fw/Makefile src/parser/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile src/blocker/Makefile src/common/Makefile src/fw/Makefile src/parser/Makefile])
+AC_OUTPUT
